@@ -111,9 +111,9 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                 <img
                   src="https://icon-library.com/images/checkin-icon/checkin-icon-7.jpg"
                   alt="plane-arrival"
-                  height="26px"
-                  width="30px"
-                  className="mx-4 text-danger"
+                  height="22px"
+                  width="28px"
+                  className="mx-2 text-danger"
                 ></img>
                 <input
                   type="date"
@@ -132,9 +132,9 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                 <img
                   src="https://cdn.iconscout.com/icon/premium/png-512-thumb/checkout-35-501661.png"
                   alt="plane-arrival"
-                  height="26px"
-                  width="30px"
-                  className="mx-4 text-danger"
+                  height="22px"
+                  width="28px"
+                  className="mx-2 text-danger"
                 ></img>
                 <input
                   type="date"

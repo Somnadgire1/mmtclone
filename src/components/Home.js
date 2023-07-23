@@ -10,7 +10,7 @@ export default function Home() {
         <h1 className="text-warning">
           Welcome to <span className="text-danger">Make-My-Trip</span> Clone
         </h1>
-        <h3 className="mx-5">Be a Smart Traveler</h3>
+        <h3 className="mx-5 text-white">Be a Smart Traveler</h3>
       </div>
       <h3 className="mx-2 text-danger-emphasis">Traveling Destinations-</h3>
 

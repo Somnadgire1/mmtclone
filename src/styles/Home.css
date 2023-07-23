@@ -7,9 +7,14 @@
 
 .text-adjust {
   position: absolute;
-  left: 25%;
-  top: 50px;
+  left: 20%;
+  top: 45px;
 }
+.text-adjust h1,
+  .text-adjust h3,
+  .hero-img h3 {
+    font-family: 'Courier New', Courier, monospace;
+  }
 
 div.gallery {
   border: 1px solid #ccc;
@@ -41,7 +46,7 @@ div.desc {
 
 @media only screen and (max-width: 800px) {
   .text-adjust {
-    left: 20%;
+    left: 17%;
   }
 
   .text-adjust h1,
@@ -58,7 +63,7 @@ div.desc {
   }
 
   .text-adjust {
-    left: 20%;
+    left: 17%;
   }
 
   .text-adjust h1,
@@ -74,7 +79,7 @@ div.desc {
   }
 
   .text-adjust {
-    left: 20%;
+    left: 15%;
   }
 
   .text-adjust h1,
@@ -95,7 +100,8 @@ div.desc {
   }
 
   .text-adjust {
-    left: 20%;
+    left: 10%;
+    top: 40px;
   }
 
   .text-adjust h1,
