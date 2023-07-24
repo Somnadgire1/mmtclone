@@ -27,14 +27,14 @@ export default function Checkout({ amount, setAmount }) {
                 <tr className="table-secondary p-2">
                   <td>Fee and Surcharges :</td>
                   <td>
-                    <i>{(amount / 100) * 10}</i>
+                    <i>{(amount / 100) * 18}</i>
                   </td>
                 </tr>
                 <tr className="table-success p-2">
                   <td>Total Amount :</td>
                   <td>
                     <i className="text-danger fw-bold">
-                      {parseInt(amount) + (amount / 100) * 10}
+                      {parseInt(amount) + (amount / 100) * 18}
                     </i>
                   </td>
                 </tr>

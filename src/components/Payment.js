@@ -13,7 +13,7 @@ function Payment({ amount }) {
         <div className="card p-3">
           <div className="card-body border p-0">
             <p className="p-2 w-100 h-100 d-flex align-items-center justify-content-between">
-              <span className="fw-bold">Debit Card</span>
+              <span className="fw-bold text-warning">Debit Card / Credit Card:</span>
             </p>
             <div className="collapse show p-3 pt-0">
               <div className="row">
@@ -24,15 +24,16 @@ function Payment({ amount }) {
                   <p className="mb-1">
                     <span className="fw-bold">Price:</span>
                     <span className="c-green mx-2">
-                      {parseInt(amount) + (amount / 100) * 10}{" "}
-                      <span className="mx-2">Rupees</span>
+                      {parseInt(amount) + (amount / 100) * 18}{" "}
+                      <span className="mx-2">Rupees only.</span>
                     </span>
                   </p>
-                  <p className="mb-1">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Atque nihil neque quisquam aut repellendus, dicta vero?
-                    Animi dicta cupiditate, facilis provident quibusdam ab quis,
-                    iste harum ipsum hic, nemo qui!
+                  <p className="mb-1 mt-2">
+                    Welcome We have added you to our mailing list. You will be
+                    among the first people to get all of our special offers,
+                    newest updates, and announcements. As an added bonus, click
+                    on the button below or use code [FLYMON] to get a [12%]
+                    discount off your next purchase. THANK YOU!
                   </p>
                 </div>
                 <div className="col-lg-7">
