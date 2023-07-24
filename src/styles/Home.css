@@ -8,7 +8,7 @@
 .text-adjust {
   position: absolute;
   left: 20%;
-  top: 45px;
+  top: 65px;
 }
 .text-adjust h1,
   .text-adjust h3,
@@ -47,6 +47,7 @@ div.desc {
 @media only screen and (max-width: 800px) {
   .text-adjust {
     left: 17%;
+    top: 72px;
   }
 
   .text-adjust h1,
@@ -64,6 +65,7 @@ div.desc {
 
   .text-adjust {
     left: 17%;
+    top: 90px;
   }
 
   .text-adjust h1,
@@ -79,7 +81,8 @@ div.desc {
   }
 
   .text-adjust {
-    left: 15%;
+    left: 10%;
+    top: 56px;
   }
 
   .text-adjust h1,
@@ -100,8 +103,8 @@ div.desc {
   }
 
   .text-adjust {
-    left: 10%;
-    top: 40px;
+    left: 7%;
+    top: 42px;
   }
 
   .text-adjust h1,

@@ -71,8 +71,8 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                 <img
                   src="https://thumb.silhouette-ac.com/t/67/67922a74f3204a08e46598c6c47f4751_t.jpeg"
                   alt="plane-arrival"
-                  height="26px"
-                  width="30px"
+                  height="22px"
+                  width="28px"
                   className="mx-2"
                 ></img>
                 <select className="form-select">
@@ -90,8 +90,8 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                 <img
                   src="https://www.pinclipart.com/picdir/middle/579-5790258_location-logo-png-hd-images-location-logo-png.png"
                   alt="plane-arrival"
-                  height="26px"
-                  width="30px"
+                  height="22px"
+                  width="28px"
                   className="mx-4 text-danger"
                 ></img>
                 <input
@@ -149,7 +149,7 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                 <label htmlFor="" className="form-label fw-bold">
                   Guests:
                 </label>
-                <i class="fa fa-users h-25 w-25 mx-4" aria-hidden="true"></i>
+                <i className="fa fa-users h-25 w-25 mx-4" aria-hidden="true"></i>
                 <input
                   type="text"
                   value={filterGuests}

@@ -6,7 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Header() {
   const [toggle, setToggle] = useState(true);
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setToggle(!toggle);
   };
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -17,14 +18,14 @@ export default function Header() {
           <Link to="/" className="navbar=brand">
             <img
               src={Logo2}
-              className="w-100"
+              className="w-100 logo"
               style={{ height: "60px" }}
               alt="make-my-trip-logo"
             ></img>
           </Link>
 
           <button
-            className="navbar-toggler"
+            className="navbar-toggler h-50"
             type="button"
             data-toggle="collapse"
             data-target="#navbarsExample09"

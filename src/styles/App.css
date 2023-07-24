@@ -41,7 +41,15 @@ nav ul li:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
-
+    /* footer */
+   .footer .btn {
+        color: #ffbc2b;
+    }
+    
+   .footer .btn:hover {
+        box-shadow: -2px 2px 2px 3px rgb(237, 241, 234);
+    
+    }
 /* flight,stay,train btn and card hover */
 .btn {
     letter-spacing: 1.5px;
@@ -73,7 +81,7 @@ nav ul li:hover::after {
 }
 
 .ticketBook:hover {
-    height: 70px;
+    height: 50px;
     width: 120px;
     font-size: 30px;
     border-radius: 30px;

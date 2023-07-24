@@ -8,6 +8,7 @@ import Hotel from "./Hotel.js";
 import Train from "./Train.js";
 import Checkout from "./Checkout.js";
 import Payment from "./Payment.js";
+import Footer from "./Footer.js";
 
 function App() {
   const [amount, setAmount] = useState([]);
@@ -57,6 +58,7 @@ function App() {
           element={<Payment amount={amount} setAmount={setAmount} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
