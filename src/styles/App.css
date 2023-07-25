@@ -134,3 +134,11 @@ nav ul li:hover::after {
     transition: .3s;
     text-transform: uppercase;
 }
+
+footer{
+    position: relative;
+    margin-top: -150px;
+    /* negative value of footer height */
+    height: 150px;
+    clear: both;
+}

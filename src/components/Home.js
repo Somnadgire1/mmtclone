@@ -15,7 +15,7 @@ export default function Home() {
       <h3 className="mx-2 text-danger-emphasis">Traveling Destinations-</h3>
 
       <div className="dest img-fluid">
-        <div className="gallery text-white">
+        <div className="gallery">
           <a
             target="_blank"
             rel="noreferrer"
@@ -28,7 +28,7 @@ export default function Home() {
               height="400"
             />
           </a>
-          <div className="desc text-white">
+          <div className="desc">
             The Taj Mahal is an ivory-white marble mausoleum on the right bank
             of the river Yamuna in Agra, Uttar Pradesh, India.
           </div>
@@ -49,7 +49,7 @@ export default function Home() {
               height="400"
             />
           </a>
-          <div className="desc text-white">
+          <div className="desc">
             Konark Sun Temple is a 13th-century CE (year 1250) Sun temple at
             Konark about 35 kilometres (22 mi) northeast from Puri city on the
             coastline in Puri district, Odisha, India.
@@ -71,7 +71,7 @@ export default function Home() {
               height="400"
             />
           </a>
-          <div className="desc text-white">
+          <div className="desc">
             For the dead of the Indian Armies who fell during World War I and
             the Third Afghan War
           </div>
@@ -92,7 +92,7 @@ export default function Home() {
               height="400"
             />
           </a>
-          <div className="desc text-white">
+          <div className="desc">
             The Charminar (lit. 'four minarets') is a monument located in
             Hyderabad, Telangana, India. Constructed in 1591, the landmark is a
             symbol of Hyderabad and officially incorporated in the emblem of
