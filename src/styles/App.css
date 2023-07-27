@@ -1,11 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
 }
 
-
+body{
+    background: url("/src/images/delicate-yellow-abstract-watercolor-background.png");
+    background-size: cover;
+    background-position: 100%;
+    font-family: "Poppins", sans-serif;
+}
 /* header */
 
 nav ul li:nth-child(1) {
@@ -56,8 +62,12 @@ nav ul li:hover::after {
 }
 
 .btn:hover {
-    box-shadow: -2px 2px 2px 3px rgb(94, 255, 0);
-
+    border-radius: 20px;
+    box-shadow: -2px 2px 2px 3px rgb(52, 59, 47);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .flightCard:hover {
@@ -78,17 +88,13 @@ nav ul li:hover::after {
     background-image: linear-gradient(to right, rgba(252, 8, 8, 0.5), rgba(153, 248, 99, 0.432));
     background-size: 100% 100%;
     font-weight: bolder;
+    transform: translate(0, -8px);
+    box-shadow: 0 20px 20px rgba(155, 118, 130, 0.2);
 }
 
 .ticketBook:hover {
-    height: 50px;
-    width: 120px;
-    font-size: 30px;
+    box-shadow: -2px 1px 1px 1px rgb(52, 59, 47);
     border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
 }
 
 /*checkout- payment section */
@@ -137,8 +143,8 @@ nav ul li:hover::after {
 
 footer{
     position: relative;
-    margin-top: -150px;
+    margin-top: auto;
     /* negative value of footer height */
-    height: 150px;
+    bottom: 0;
     clear: both;
 }

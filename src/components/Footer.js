@@ -4,7 +4,7 @@ import "../styles/App.css";
 export default function Footer() {
   return (
     <div>
-      <footer className="bg-dark text-center text-white mt-5 footer">
+      <footer className="bg-dark text-center text-white mt-auto footer">
         <div className="container-fluid p-4 pb-0">
           <section className="mb-4">
           <a
