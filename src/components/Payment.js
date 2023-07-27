@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/App.css";
 
-function Payment({ amount }) {
+function Payment({ amount, setAmount }) {
   return (
     <div className="container">
       <div className="col-12 mt-5">

@@ -1,11 +1,15 @@
-import React from "react";
+import React,{useState }  from "react";
 import "../styles/App.css";
 import Logo2 from "../images/mmtLogoWhite.png";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Header() {
-
+  const [toggle, setToggle] = useState(true);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setToggle(!toggle);
+  };
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   return (
     <>
@@ -19,11 +23,23 @@ export default function Header() {
               alt="make-my-trip-logo"
             ></img>
           </Link>
-          <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse text-right" id="navbarNavAltMarkup">
-            <ul className="navbar-nav ms-auto me-5">
+          <button
+            className="navbar-toggler h-50"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarsExample09"
+            aria-controls="navbarsExample09"
+            aria-expanded={!toggle ? true : false}
+            aria-label="Toggle navigation"
+            onClick={handleClick}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div
+            className={`${toggle ? "collapse" : ""} navbar-collapse`}
+            id="navbarsExample09"
+          >
+            <ul className="navbar-nav ms-auto me-5" show={toggle}>
               <li className="nav-item fs-4 p-2">
                 <Link to="/flight" className="nav-link">
                   Flights
