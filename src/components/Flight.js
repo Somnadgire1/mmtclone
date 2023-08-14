@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/App.css";
 
-export default function Flight({ amount, setAmount, isShown, setIsShown }) {
+export default function Flight({ setSelectedService }) {
   const [filterFrom, setFilterFrom] = useState("");
   const [filterTo, setFilterTo] = useState("");
   const [filterDepart, setFilterDepart] = useState("");
@@ -55,8 +55,11 @@ export default function Flight({ amount, setAmount, isShown, setIsShown }) {
       return fromMatch && toMatch && departMatch && returnMatch;
     });
     setData(filteredData);
-    setIsShown(true); //Available ticket shown-text-line no.140
+    // setIsShown(true); //Available ticket shown-text-line no.140
   };
+  const bookFlight = (flight) => {
+    setSelectedService(flight);
+};
 
   return (
     <>
@@ -148,7 +151,7 @@ export default function Flight({ amount, setAmount, isShown, setIsShown }) {
       <hr />
       <div className="px-3">
         <div className="text-center">
-          <div className="">{isShown && <h4>Available Tickets:</h4>}</div>
+          <div className=""> <h4>Available Tickets:</h4></div>
           {data.map((item, index) => (
             <div className="card container text-center mb-2 flightCard">
               <div className="row align-items-start card-body" key={index}>
@@ -195,12 +198,13 @@ export default function Flight({ amount, setAmount, isShown, setIsShown }) {
                     <button
                       type="button"
                       className="btn btn-outline-info btn-sm ticketBook fw-bold"
-                      onClick={() => {
-                        localStorage.setItem("flight-Price", item.price);
-                        setAmount(
-                          localStorage.getItem("flight-Price", item.price)
-                        );
-                      }}
+                      onClick={() => bookFlight(item)}
+                      //   localStorage.setItem("flight-Price", item.price);
+                      //   setAmount(
+                      //     localStorage.getItem("flight-Price", item.price)
+                      //   );
+                      // }}
+                      
                     >
                       Book
                     </button>

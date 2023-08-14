@@ -1,7 +1,62 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { jsPDF } from 'jspdf';
 import "../styles/App.css";
 
-function Payment({ amount, setAmount }) {
+function Payment({ selectedService }) {
+  const [ticket, setTicket] = useState(null);
+  const formRef = useRef(null);
+
+  // const amount = selectedService ? selectedService.price : 0;
+  const amount = (selectedService && selectedService.price) ? selectedService.price : 0;
+
+  const calculatedAmount = parseInt(amount) + (amount / 100) * 18;
+//   console.log("Amount:", amount);
+// console.log("Calculated Amount:", calculatedAmount);
+// console.log(selectedService);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form Submitted. Integrate with payment gateway.");
+
+    // Simulated payment processing
+    setTimeout(() => {
+      // Assuming payment is successful, generate a simulated ticket
+      const generatedTicket = {
+        id: Math.floor(Math.random() * 1000000),
+        amountPaid: parseInt(amount) + (amount / 100) * 18,
+        date: new Date().toLocaleString(),
+        userName: formRef.current['nameOnCard'].value,
+  journeyDetails: selectedService ? `${selectedService.from} to ${selectedService.to} via ${selectedService.airlineName}` : 'N/A',
+  journeyDate: selectedService ? selectedService.departure.departureDate : 'N/A',
+  journeyTime: selectedService ? selectedService.departure.departureTime : 'N/A'
+      };
+
+      setTicket(generatedTicket);
+     // Reset the form
+      if (formRef.current) {
+        formRef.current.reset();  // Reset the form here
+      }
+
+    }, 1000);
+  };
+  const downloadTicket = () => {
+    const doc = new jsPDF();
+
+    // Set the title
+    doc.setFontSize(22);
+    doc.text('Ticket Details', 50, 10);
+
+    // Add ticket details
+    doc.setFontSize(14);
+    doc.text(`User: ${ticket.userName}`, 10, 30);
+    doc.text(`Ticket ID: ${ticket.id}`, 10, 40);
+    doc.text(`Journey: ${ticket.journeyDetails}`, 10, 50);
+    doc.text(`Date: ${ticket.journeyDate}`, 10, 60);
+    doc.text(`Time: ${ticket.journeyTime}`, 10, 70);
+    doc.text(`Amount Paid: ${ticket.amountPaid} Rupees`, 10, 80);
+    doc.text('Ticket Status : Successfully Booked...', 10, 90);
+    // Save the PDF
+    doc.save(`Ticket ${ticket.id}.pdf`);
+  };
   return (
     <div className="container">
       <div className="col-12 mt-5">
@@ -24,8 +79,7 @@ function Payment({ amount, setAmount }) {
                   <p className="mb-1">
                     <span className="fw-bold">Price:</span>
                     <span className="c-green mx-2">
-                      {parseInt(amount) + (amount / 100) * 18}{" "}
-                      <span className="mx-2">Rupees only.</span>
+                      <span className="mx-2">{calculatedAmount} Rupees only.</span>
                     </span>
                   </p>
                   <p className="mb-1 mt-2">
@@ -37,18 +91,16 @@ function Payment({ amount, setAmount }) {
                   </p>
                 </div>
                 <div className="col-lg-7">
-                  <form action="" className="form">
+                  <form action="" onSubmit={handleSubmit} ref={formRef} className="form">
                     <div className="row">
                       <div className="col-12">
                         <div className="form__div">
                           <input
-                            type="text"
+                            type="number"
                             className="form-control"
-                            placeholder=" "
+                            placeholder="Card Number" required
                           />
-                          <label for="" className="form__label">
-                            Card Number
-                          </label>
+                         
                         </div>
                       </div>
 
@@ -57,11 +109,9 @@ function Payment({ amount, setAmount }) {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder=" "
+                            placeholder="MM / YY" required
                           />
-                          <label for="" className="form__label">
-                            MM / yy
-                          </label>
+                        
                         </div>
                       </div>
 
@@ -70,11 +120,9 @@ function Payment({ amount, setAmount }) {
                           <input
                             type="password"
                             className="form-control"
-                            placeholder=" "
+                            placeholder="cvv code" required
                           />
-                          <label for="" className="form__label">
-                            cvv code
-                          </label>
+                          
                         </div>
                       </div>
                       <div className="col-12">
@@ -82,15 +130,14 @@ function Payment({ amount, setAmount }) {
                           <input
                             type="text"
                             className="form-control"
-                            placeholder=" "
+                            placeholder="Name on the card"
+                            name="nameOnCard" required
                           />
-                          <label for="" className="form__label">
-                            name on the card
-                          </label>
+                          
                         </div>
                       </div>
                       <div className="col-12">
-                        <div className="btn btn-primary w-100">Sumbit</div>
+                        <button className="btn btn-primary w-100">Make Payment</button>
                       </div>
                     </div>
                   </form>
@@ -100,9 +147,51 @@ function Payment({ amount, setAmount }) {
           </div>
         </div>
       </div>
-      <div className="col-12">
-        <div className="btn btn-danger w-100 fw-bold">Make Payment</div>
-      </div>
+      
+      {ticket && (
+         <div className="col-12 mt-4 mb-4">
+         <div className="card border-primary shadow">
+           <div className="card-header bg-danger text-white">
+             Ticket Details
+           </div>
+           <div className="card-body">
+           <p className="text-muted mb-4">
+          Follow the instructions below to ensure a smooth journey. Keep your ticket handy for verification purposes.
+        </p>
+             <div className="row mb-2">
+               <div className="col-md-6">
+                 <strong>User:</strong> {ticket.userName}
+               </div>
+               <div className="col-md-6">
+                 <strong>Ticket ID:</strong> {ticket.id}
+               </div>
+             </div>
+             <div className="row mb-2">
+               <div className="col-md-6">
+                 <strong>Journey:</strong> {ticket.journeyDetails}
+               </div>
+               <div className="col-md-6">
+                 <strong>Date:</strong> {ticket.journeyDate}
+               </div>
+             </div>
+             <div className="row mb-2">
+               <div className="col-md-6">
+                 <strong>Time:</strong> {ticket.journeyTime}
+               </div>
+               <div className="col-md-6">
+                 <strong>Amount Paid:</strong> {ticket.amountPaid} Rupees
+               </div>
+             </div>
+           </div>
+           <div className="card-footer text-muted text-center">
+             Purchase Date: {ticket.date}
+             <button className="btn btn-outline-success ms-4" onClick={downloadTicket}>
+              Download Ticket
+            </button>
+           </div>
+         </div>
+       </div>
+      )}
     </div>
   );
 }

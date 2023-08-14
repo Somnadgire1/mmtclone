@@ -11,8 +11,11 @@ import Payment from "./Payment.js";
 import Footer from "./Footer.js";
 
 function App() {
-  const [amount, setAmount] = useState([]);
-  const [isShown, setIsShown] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+const [amount, setAmount] = useState([]);
+
+  const [selectedService, setSelectedService] = useState(null);  // contains selected flight, train, or hotel details
+  // const [isShown, setIsShown] = useState(false);
 
   return (
     <div className="App">
@@ -23,10 +26,11 @@ function App() {
           path="/flight"
           element={
             <Flight
-              amount={amount}
-              setAmount={setAmount}
-              isShown={isShown}
-              setIsShown={setIsShown}
+            setSelectedService={setSelectedService}
+              // amount={amount}
+              // setAmount={setAmount}
+              // isShown={isShown}
+              // setIsShown={setIsShown}
             />
           }
         />
@@ -34,10 +38,11 @@ function App() {
           path="/hotel"
           element={
             <Hotel
-              amount={amount}
-              setAmount={setAmount}
-              isShown={isShown}
-              setIsShown={setIsShown}
+            setSelectedService={setSelectedService}
+            // amount={amount}
+            // setAmount={setAmount}
+            // isShown={isShown}
+            // setIsShown={setIsShown}
             />
           }
         />
@@ -45,17 +50,20 @@ function App() {
           path="/train"
           element={
             <Train
-              amount={amount}
-              setAmount={setAmount}
-              isShown={isShown}
-              setIsShown={setIsShown}
+            setSelectedService={setSelectedService}
+            // amount={amount}
+            // setAmount={setAmount}
+            // isShown={isShown}
+            // setIsShown={setIsShown}
             />
           }
         />
-        <Route path="/checkout" element={<Checkout amount={amount} />} />
+        <Route path="/checkout" element={<Checkout selectedService={selectedService} setAmount={setAmount} />} />
         <Route
           path="/payment"
-          element={<Payment amount={amount} setAmount={setAmount} />}
+          element={<Payment selectedService={selectedService}
+            />
+          }
         />
       </Routes>
       <Footer />

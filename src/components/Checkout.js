@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Checkout({ amount, setAmount }) {
+export default function Checkout({ selectedService, setAmount }) {
+  useEffect(() => {
+    if (selectedService) {
+      setAmount(selectedService.price);
+    }
+  }, [selectedService, setAmount]);
+  const amount = selectedService ? selectedService.price : 0;
   return (
     <div>
       <div className="container">
