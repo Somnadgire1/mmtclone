@@ -6,13 +6,10 @@ function Payment({ selectedService }) {
   const [ticket, setTicket] = useState(null);
   const formRef = useRef(null);
 
-  // const amount = selectedService ? selectedService.price : 0;
   const amount = (selectedService && selectedService.price) ? selectedService.price : 0;
 
   const calculatedAmount = parseInt(amount) + (amount / 100) * 18;
-//   console.log("Amount:", amount);
-// console.log("Calculated Amount:", calculatedAmount);
-// console.log(selectedService);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Form Submitted. Integrate with payment gateway.");
@@ -26,14 +23,14 @@ function Payment({ selectedService }) {
         date: new Date().toLocaleString(),
         userName: formRef.current['nameOnCard'].value,
   journeyDetails: selectedService ? `${selectedService.from} to ${selectedService.to} via ${selectedService.airlineName}` : 'N/A',
-  journeyDate: selectedService ? selectedService.departure.departureDate : 'N/A',
-  journeyTime: selectedService ? selectedService.departure.departureTime : 'N/A'
+//   journeyDate: selectedService ? selectedService.departure.departureDate : 'N/A',
+//   journeyTime: selectedService ? selectedService.departure.departureTime : 'N/A'
       };
 
       setTicket(generatedTicket);
      // Reset the form
       if (formRef.current) {
-        formRef.current.reset();  // Reset the form here
+        formRef.current.reset();
       }
 
     }, 1000);
