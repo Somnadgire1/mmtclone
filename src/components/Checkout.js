@@ -5,9 +5,10 @@ export default function Checkout({ selectedService, setAmount }) {
   useEffect(() => {
     if (selectedService) {
       setAmount(selectedService.price);
+      setAmount(selectedService.price_per_night);
     }
   }, [selectedService, setAmount]);
-  const amount = selectedService ? selectedService.price : 0;
+  const amount = selectedService ? (selectedService.price) || (selectedService.price_per_night) : 0;
   return (
     <div>
       <div className="container">

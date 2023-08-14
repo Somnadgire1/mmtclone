@@ -74,8 +74,7 @@ function Payment({ selectedService }) {
               <div className="row">
                 <div className="col-lg-5 mb-lg-0 mb-3">
                   <p className="h4 mb-1">Summary</p>
-                  {/* <p className="mb-1"><span className="fw-bold">Traveling Details:</span><span className="c-green"> x to y</span>
-                                    </p> */}
+               
                   <p className="mb-1">
                     <span className="fw-bold">Price:</span>
                     <span className="c-green mx-2">
@@ -118,7 +117,7 @@ function Payment({ selectedService }) {
                       <div className="col-6">
                         <div className="form__div">
                           <input
-                            type="password"
+                            type="text"
                             className="form-control"
                             placeholder="cvv code" required
                           />
@@ -151,7 +150,7 @@ function Payment({ selectedService }) {
       {ticket && (
          <div className="col-12 mt-4 mb-4">
          <div className="card border-primary shadow">
-           <div className="card-header bg-danger text-white">
+           <div className="card-header bg-danger text-white fw-bolder text-center">
              Ticket Details
            </div>
            <div className="card-body">
@@ -182,6 +181,9 @@ function Payment({ selectedService }) {
                  <strong>Amount Paid:</strong> {ticket.amountPaid} Rupees
                </div>
              </div>
+             <div className="col-md-6 text-muted">
+                 <p>Booking Successful....</p>
+               </div>
            </div>
            <div className="card-footer text-muted text-center">
              Purchase Date: {ticket.date}

@@ -55,7 +55,6 @@ export default function Flight({ setSelectedService }) {
       return fromMatch && toMatch && departMatch && returnMatch;
     });
     setData(filteredData);
-    // setIsShown(true); //Available ticket shown-text-line no.140
   };
   const bookFlight = (flight) => {
     setSelectedService(flight);

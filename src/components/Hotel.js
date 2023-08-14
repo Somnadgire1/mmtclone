@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
+export default function Hotel({ setSelectedService }) {
   const [filterCity, setFilterCity] = useState("");
   const [filterCheckIn, setFilterCheckIn] = useState("");
   const [filterCheckOut, setFilterCheckOut] = useState("");
   const [filterGuests, setFilterGuests] = useState("");
   const [searchAPIdata, setSearchAPIdata] = useState([]);
   const [data, setData] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,8 +56,10 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
       return cityMatch && checkInMatch && checkOutMatch && guestMatch;
     });
     setData(filteredData);
-    setIsShown(true); //Available ticket-text-line no.140
   };
+  const bookHotel = (hotel) => {
+    setSelectedService(hotel);
+};
   return (
     <>
       <div className="container">
@@ -173,8 +175,11 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
       </div>
       <hr />
       <div className="px-3">
+      <div className="alert alert-info" role="alert">
+   Click on "Book" to reserve your room!
+</div>
         <div className="text-center">
-          <div className="">{isShown && <h4>Available Tickets:</h4>}</div>
+          <div className=""><h4>Available Tickets:</h4></div>
           {data.map((item, index) => (
             <div className="card container text-center mb-2 hotelCard">
               <div className="row align-items-start card-body" key={index}>
@@ -221,18 +226,7 @@ export default function Hotel({ amount, setAmount, isShown, setIsShown }) {
                     <button
                       type="button"
                       className="btn btn-outline-info btn-sm ticketBook fw-bold"
-                      onClick={() => {
-                        localStorage.setItem(
-                          "hotel-Price",
-                          item.price_per_night
-                        );
-                        setAmount(
-                          localStorage.getItem(
-                            "hotel-Price",
-                            item.price_per_night
-                          )
-                        );
-                      }}
+                      onClick={() => bookHotel(item)}
                     >
                       Book
                     </button>

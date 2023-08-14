@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Train({ amount, setAmount, isShown, setIsShown }) {
+export default function Flight({ setSelectedService }) {
   const [filterFrom, setFilterFrom] = useState("");
   const [filterTo, setFilterTo] = useState("");
   const [filterTravel, setFilterTravel] = useState("");
@@ -53,8 +53,10 @@ export default function Train({ amount, setAmount, isShown, setIsShown }) {
       return fromMatch && toMatch && travelMatch && trainNumberMatch;
     });
     setData(filteredData);
-    setIsShown(true); //Available ticket-text-line no.140
   };
+  const bookTrain = (train) => {
+    setSelectedService(train);
+};
 
   return (
     <>
@@ -145,7 +147,7 @@ export default function Train({ amount, setAmount, isShown, setIsShown }) {
       <hr />
       <div className="px-3">
         <div className="text-center">
-          <div className="">{isShown && <h4>Available Tickets:</h4>}</div>
+          <div className=""><h4>Available Tickets:</h4></div>
           {data.map((item, index) => (
             <div className="card container text-center mb-2 trainCard">
               <div className="row align-items-start card-body" key={index}>
@@ -191,12 +193,7 @@ export default function Train({ amount, setAmount, isShown, setIsShown }) {
                     <button
                       type="button"
                       className="btn btn-outline-info btn-sm ticketBook fw-bold"
-                      onClick={() => {
-                        localStorage.setItem("train-Price", item.price);
-                        setAmount(
-                          localStorage.getItem("train-Price", item.price)
-                        );
-                      }}
+                      onClick={() => bookTrain(item)}
                     >
                       Book
                     </button>

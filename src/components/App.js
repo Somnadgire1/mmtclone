@@ -14,8 +14,7 @@ function App() {
   // eslint-disable-next-line no-unused-vars
 const [amount, setAmount] = useState([]);
 
-  const [selectedService, setSelectedService] = useState(null);  // contains selected flight, train, or hotel details
-  // const [isShown, setIsShown] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   return (
     <div className="App">
@@ -27,10 +26,7 @@ const [amount, setAmount] = useState([]);
           element={
             <Flight
             setSelectedService={setSelectedService}
-              // amount={amount}
-              // setAmount={setAmount}
-              // isShown={isShown}
-              // setIsShown={setIsShown}
+            
             />
           }
         />
@@ -39,10 +35,7 @@ const [amount, setAmount] = useState([]);
           element={
             <Hotel
             setSelectedService={setSelectedService}
-            // amount={amount}
-            // setAmount={setAmount}
-            // isShown={isShown}
-            // setIsShown={setIsShown}
+          
             />
           }
         />
@@ -51,10 +44,7 @@ const [amount, setAmount] = useState([]);
           element={
             <Train
             setSelectedService={setSelectedService}
-            // amount={amount}
-            // setAmount={setAmount}
-            // isShown={isShown}
-            // setIsShown={setIsShown}
+           
             />
           }
         />
