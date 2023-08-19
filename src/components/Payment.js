@@ -6,7 +6,7 @@ function Payment({ selectedService }) {
   const [ticket, setTicket] = useState(null);
   const formRef = useRef(null);
 
-  const amount = (selectedService && selectedService.price) ? selectedService.price : 0;
+  const amount = selectedService ? (selectedService.price) || (selectedService.price_per_night) : 0;
 
   const calculatedAmount = parseInt(amount) + (amount / 100) * 18;
 
@@ -20,9 +20,10 @@ function Payment({ selectedService }) {
       const generatedTicket = {
         id: Math.floor(Math.random() * 1000000),
         amountPaid: parseInt(amount) + (amount / 100) * 18,
+        seat: 'A-'+ Math.floor(Math.random() * 100),
         date: new Date().toLocaleString(),
         userName: formRef.current['nameOnCard'].value,
-  journeyDetails: selectedService ? `${selectedService.from} to ${selectedService.to} via ${selectedService.airlineName}` : 'N/A',
+  // journeyDetails: selectedService ? `${selectedService.from} to ${selectedService.to} via ${selectedService.airlineName}` : 'N/A',
 //   journeyDate: selectedService ? selectedService.departure.departureDate : 'N/A',
 //   journeyTime: selectedService ? selectedService.departure.departureTime : 'N/A'
       };
@@ -45,11 +46,11 @@ function Payment({ selectedService }) {
     // Add ticket details
     doc.setFontSize(14);
     doc.text(`User: ${ticket.userName}`, 10, 30);
-    doc.text(`Ticket ID: ${ticket.id}`, 10, 40);
-    doc.text(`Journey: ${ticket.journeyDetails}`, 10, 50);
-    doc.text(`Date: ${ticket.journeyDate}`, 10, 60);
-    doc.text(`Time: ${ticket.journeyTime}`, 10, 70);
-    doc.text(`Amount Paid: ${ticket.amountPaid} Rupees`, 10, 80);
+    doc.text(`Ticket ID: ${ticket.id}`, 10, 50);
+    // doc.text(`Journey: ${ticket.journeyDetails}`, 10, 50);
+    // doc.text(`Date: ${ticket.journeyDate}`, 10, 60);
+    // doc.text(`Time: ${ticket.journeyTime}`, 10, 70);
+    doc.text(`Amount Paid: ${ticket.amountPaid} Rupees`, 10, 70);
     doc.text('Ticket Status : Successfully Booked...', 10, 90);
     // Save the PDF
     doc.save(`Ticket ${ticket.id}.pdf`);
@@ -148,7 +149,7 @@ function Payment({ selectedService }) {
          <div className="col-12 mt-4 mb-4">
          <div className="card border-primary shadow">
            <div className="card-header bg-danger text-white fw-bolder text-center">
-             Ticket Details
+             Sample Ticket Details
            </div>
            <div className="card-body">
            <p className="text-muted mb-4">
@@ -162,8 +163,8 @@ function Payment({ selectedService }) {
                  <strong>Ticket ID:</strong> {ticket.id}
                </div>
              </div>
-             <div className="row mb-2">
-               <div className="col-md-6">
+          <div className="row mb-2">
+                 {/*  <div className="col-md-6">
                  <strong>Journey:</strong> {ticket.journeyDetails}
                </div>
                <div className="col-md-6">
@@ -173,6 +174,9 @@ function Payment({ selectedService }) {
              <div className="row mb-2">
                <div className="col-md-6">
                  <strong>Time:</strong> {ticket.journeyTime}
+               </div> */}
+               <div className="col-md-6">
+                 <strong>Reserved Seat/Room:</strong> {ticket.seat}
                </div>
                <div className="col-md-6">
                  <strong>Amount Paid:</strong> {ticket.amountPaid} Rupees

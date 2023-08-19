@@ -146,6 +146,9 @@ export default function Flight({ setSelectedService }) {
       </div>
       <hr />
       <div className="px-3">
+      <div className="alert alert-warning" role="alert">
+   Click on "Book" to reserve your Train Ticket!
+</div>
         <div className="text-center">
           <div className=""><h4>Available Tickets:</h4></div>
           {data.map((item, index) => (
